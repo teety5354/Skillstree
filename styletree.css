@@ -1,0 +1,243 @@
+@keyframes slideGrid {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: -100px -100px; 
+    }
+}
+
+body, html {
+    height: 100%;
+    font-family: sans-serif;
+    background-color: #FAF5EF;
+    background-image: 
+        linear-gradient(to right, rgb(185, 122, 122) 1px, transparent 1px),
+        linear-gradient(to bottom, rgb(185, 122, 122) 1px, transparent 1px);
+    
+    background-size: 100px 100px;
+    background-position: -1px -1px;
+    animation: slideGrid 15s linear infinite; 
+}
+
+.viewport-wrapper {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden; 
+    position: relative;
+}
+
+.skill-tree-drag-area {
+    width: 19200px; 
+    height: 10800px;
+    position: relative;
+    cursor: grab;
+}
+
+.skill-tree-drag-area.active-drag {
+    cursor: grabbing; 
+}
+
+.skill-node {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #736055;
+    background-color: #FAF5EF;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    z-index: 5;
+    opacity: 1; 
+    /*transition: opacity 0.8s ease-out, transform 0.3s, box-shadow 0.3s;*/
+}
+
+.skill-node:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(120, 162, 194, 0.6);
+}
+
+.circular-shape {
+    width: 100px;
+    height: 50px; 
+    border-radius: 25px; 
+    background-color: #F4E2DE; 
+}
+
+.circle-shape {
+    width: 100px;
+    height: 50px; 
+    border-radius: 50%; 
+    z-index: 5;
+}
+
+.node-info {
+    position: absolute;
+    width: 320px;
+    padding: 15px;
+    background-color: white;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: normal;
+    text-align: left;
+    color: #555;
+    z-index: 100; /* **[จุดสำคัญ] ทำให้ Node Info ลอยอยู่เหนือทุก Node และเส้น** */
+    
+    opacity: 0; 
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+    
+    top: 50%;
+    left: 100%;
+    transform: translate(15px, -50%);
+}
+
+.skill-node:hover .node-info {
+    opacity: 1;
+    visibility: visible;
+}
+
+.node-info.left-side {
+    left: auto;
+    right: 100%;
+    transform: translate(-15px, -50%);
+    z-index: 100;
+}
+
+/*
+
+
+
+
+
+                                    Property Node จ้าาา
+
+
+
+
+
+
+*/
+#node-FL { 
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 3px solid #78a2c2;
+    opacity: 1; 
+    background-image: url('fl-fruit-logo.png') ;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 10;
+
+}
+
+#node-center { 
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 3px solid #78a2c2;
+    opacity: 1; 
+    background-image: url('Teety1.png') ;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 10;
+}
+
+#node-Roblox { 
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 3px solid #78a2c2;
+    opacity: 1; 
+    background-image: url('Roblox_Studio.png') ;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 2;
+
+}
+
+
+/*
+
+
+
+
+
+
+
+                                        ตำแหน่งNodeจ้า
+
+
+
+
+
+
+
+
+
+*/
+/* ตำแหน่ง Node (19200x10800px) */
+#node-center { 
+    z-index: 10;
+    top: 5400px; 
+    left: 9600px; 
+    transform: translate(-50%, -50%); 
+    
+}
+
+
+#node-art { 
+    z-index: 6; /* กำหนดให้สูงกว่า Node ทั่วไป (5) และ Node Center (10) */
+    top: 5100px; 
+    left: 9600px; 
+    transform: translateX(-50%);
+}
+#node-volunteer { top: 5650px; left: 9600px; transform: translateX(-50%); }
+#node-eng-main { top: 5400px; left: 9250px; transform: translateY(-50%); }
+#node-work { top: 5400px; left: 9900px; transform: translateY(-50%); }
+#node-Roblox { top: 5600px; left: 9000px; transform: translateY(-50%); }
+#node-comp { top: 5400px; left: 10200px; transform: translateY(-50%); }
+#node-FL { z-index: 4; /* ให้ Node ที่อยู่ข้างบนมันมี Z-index ต่ำกว่า */
+    top: 4900px; 
+    left: 9600px; 
+    transform: translateX(-50%); 
+}
+
+
+
+
+
+
+
+
+
+/*                      โค้ดเส้นเชื่อม                        */
+.skill-tree-connectors {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1; 
+    pointer-events: none;
+    width: 19200px; 
+    height: 10800px;
+    viewBox: 0 0 19200 10800; 
+}
+
+.connection-line {
+    stroke: #736055; 
+    stroke-width: 5;
+    fill: none;
+    /* ลบโค้ดอนิเมชันทั้งหมดออก */
+}
+
+/* ลบ .line-unlocked ออกไปเลย */

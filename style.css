@@ -1,0 +1,210 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* -------------------
+   การตั้งค่าหลักของหน้า
+   ------------------- */
+
+body, html {
+    height: 100%;
+    font-family: sans-serif;
+}
+
+/* Keyframes สำหรับอนิเมชันพื้นหลัง (Grid Slide) */
+@keyframes slideGrid {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        /* เปลี่ยนเป็น -30px -30px เพื่อให้วนลูปเนียนตาม background-size: 30px 30px */
+        background-position: -30px -30px; 
+    }
+}
+
+/* Keyframes สำหรับอนิเมชันโผล่ออกมา (Fade-in Up) */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 100vh;
+    /* ปรับลด Padding ด้านบน/ล่าง เพื่อลดระยะห่างโดยรวม */
+    padding: 10px 40px 10px 40px; 
+
+    /* สีพื้นหลัง & Grid */
+    background-color: #FAF5EF;
+    background-image: 
+        linear-gradient(to right, rgb(255, 255, 255) 1px, transparent 1px),
+        linear-gradient(to bottom, rgb(255, 255, 255) 1px, transparent 1px);
+    
+    background-size: 50px 50px;
+    background-position: -1px -1px;
+
+    /* อนิเมชั่นพื้นหลัง */
+    animation: slideGrid 15s linear infinite; 
+}
+
+
+/* -------------------
+   ส่วนหัว (Header)
+   ------------------- */
+
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px; /* เพิ่มระยะห่างด้านล่างเล็กน้อยให้หายใจ */
+
+    /* อนิเมชั่นเริ่มต้น */
+    opacity: 0; 
+    animation: fadeInUp 0.8s ease-out 0.2s;
+    animation-fill-mode: forwards;
+}
+
+.portfolio-title {
+    font-size: 4rem;
+    font-weight: 500;
+    color: #736055;
+    text-align: center;
+    margin: 0; 
+    padding: 0;
+}
+
+
+/* -------------------
+   เนื้อหาหลัก (Main Content)
+   ------------------- */
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1; 
+    /* ดึงขึ้นไปใกล้ Header */
+    margin-top: -50px; 
+    
+    /* อนิเมชั่นเริ่มต้น */
+    opacity: 0; 
+    animation: fadeInUp 0.8s ease-out 0.5s; 
+    animation-fill-mode: forwards;
+}
+
+/* วงกลมสำหรับใส่รูปภาพ */
+.profile-circle {
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    
+    /* รูปภาพ: ใช้ไฟล์ที่คุณกำหนด */
+    background-image: url('10_P11.png'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    /* ขอบและเงา */
+    border: 3px solid #F4E2DE;
+    box-shadow: 0 0 15px rgba(120, 162, 194, 0.6), 0 0 5px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px; 
+
+    transition: background-image 0.3s ease-in-out, box-shadow 0.3s ease;
+}
+
+.profile-circle:hover {
+    background-image: url('1112.png'); 
+    /* เพิ่มเงาเรืองแสงเมื่อ Hover */
+    box-shadow: 0 0 25px rgba(120, 162, 194, 0.8), 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* ปุ่ม START */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(1); }
+}
+
+.start-button {
+    text-decoration: none;
+    background-color: #4E7DA6;
+    color: #F2E3D5;
+    font-size: 3rem;
+    font-weight: bold;
+    padding: 12px 60px;
+    border-radius: 50px;
+    border: 3px solid #F4E2DE;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    
+    transition: background-color 0.3s, transform 0.1s, font-size 0.5s;
+    /* เพิ่มอนิเมชั่น pulse */
+    animation: pulse 2s ease-in-out infinite; 
+}
+
+.start-button:hover {
+    background-color: #6a95b3;
+    transform: translateY(-4px);
+    font-size: 3.5rem;
+    animation: none; /* หยุด Pulse เมื่อ Hover */
+}
+
+.start-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+
+/* -------------------
+   ส่วนท้าย (Footer)
+   ------------------- */
+
+.footer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    font-size: 0.9rem;
+    color: #736055;
+    
+    /* อนิเมชั่นเริ่มต้น */
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out 0.8s;
+    animation-fill-mode: forwards;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icon {
+    font-size: 75px;
+    color: #242424; 
+    text-decoration: none;
+    transition: font-size 0.3s, transform 0.2s;
+}
+.social-links .fa-youtube-square {
+    color: #ff0000;
+}
+
+.social-icon:hover {
+    font-size: 85px;
+    transform: scale(1.1); /* เพิ่มลูกเล่นขยายเล็กน้อย */
+}
+
+.copyright {
+    align-self: flex-end;
+}
