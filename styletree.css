@@ -103,6 +103,7 @@ body, html {
 .skill-node:hover .node-info {
     opacity: 1;
     visibility: visible;
+    z-index: 100;
 }
 
 .node-info.left-side {
@@ -165,6 +166,68 @@ body, html {
     background-color: #F4E2DE; /* สีพื้นหลังเล็กน้อย */
 }
 
+/* --- Flexible Image Node Styling --- */
+
+.flexible-image-node {
+    /* **[A] การตั้งค่าพื้นฐานของ Node (กล่องรอบนอก)** */
+    /* ลบ width/height เดิมออกเพื่อให้มันหดตามขนาดรูปภาพภายใน */
+    width: auto;
+    height: auto;
+    z-index: 5;
+    /* ต้องเปลี่ยน display เป็น inline-block เพื่อให้หดตัวตามเนื้อหา (รูปภาพ) */
+    display: inline-block; 
+    
+    padding: 0; /* ลบ padding ออกเพื่อให้รูปภาพติดขอบ */
+    border-radius: 8px; 
+    
+    /* ลบพื้นหลังและเงาเดิมออก เพื่อให้เห็นแต่รูปภาพ */
+    background-color: transparent; 
+    box-shadow: none; 
+    overflow: visible; /* **สำคัญ:** ซ่อนส่วนเกินและให้ขอบมน */
+
+    /* คงคุณสมบัติที่สำคัญของ Node ไว้ */
+    position: relative;
+    cursor: pointer;
+    z-index: 5;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.flexible-image-node .node-image {
+    /* **[B] การกำหนดขนาดสูงสุดให้กับรูปภาพ** */
+    /* ควบคุมขนาดโดยใช้ Max-Width และ Max-Height */
+    
+    max-height: 300px; /* **ความสูงสูงสุดที่คุณต้องการ** */
+    max-width: 300px;  /* ความกว้างสูงสุด (กว้างกว่าสูงเล็กน้อย) */
+    
+    z-index: 1;
+
+    height: auto;      /* ให้ความสูงปรับตามอัตราส่วน */
+    width: auto;       /* ให้ความกว้างปรับตามอัตราส่วน */
+    
+    /* หากรูปภาพจริงใหญ่กว่า Max Size มันจะถูกย่อลงตามอัตราส่วนเดิม */
+    /* หากรูปภาพจริงเล็กกว่า Max Size มันจะแสดงตามขนาดจริง */
+    
+    /* ทำให้รูปภาพดูดีขึ้นเมื่อ Hover */
+    display: block;
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+.flexible-image-node:hover {
+    /* กำหนด Box Shadow ให้กับรูปภาพ/Node โดยรวมเมื่อ Hover */
+
+    box-shadow: 0 0 15px rgba(120, 162, 194, 0.6);
+    transform: scale(1.03);
+}
+.flexible-image-node .node-info {
+    /* Overwrite ให้ตำแหน่ง Info Box อยู่ด้านขวาของ Node */
+    top: 50%;
+    left: 100%;
+    right: auto;
+    transform: translate(15px, -50%); /* เลื่อนไปด้านขวา 15px และจัดกึ่งกลางแนวตั้ง */
+    
+    z-index: 150; /* เพิ่ม Z-index ให้สูงกว่า .node-info ปกติเล็กน้อยเพื่อความชัวร์ */
+}
+
 /*
 
 
@@ -179,19 +242,7 @@ body, html {
 
 
 */
-#node-FL { 
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    border: 3px solid #78a2c2;
-    opacity: 1; 
-    background-image: url('fl-fruit-logo.png') ;
-    background-position: center;
-    background-size: contain;
-    background-repeat: no-repeat;
-    z-index: 10;
 
-}
 
 #node-center { 
     width: 200px;
@@ -214,9 +265,9 @@ body, html {
     opacity: 1; 
     background-image: url('Roblox_Studio.png') ;
     background-position: center;
-    background-size: contain;
+    background-size: 75px;
     background-repeat: no-repeat;
-    z-index: 2;
+    z-index: 9;
 }
 #node-Lua {
     width: 70px;
@@ -242,8 +293,66 @@ body, html {
     background-repeat: no-repeat;
     z-index: 2;
 }
+#node-Pr {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 3px solid #78a2c2;
+    opacity: 1; 
+    background-image: url('Adobe_Premiere_Pro.png') ;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: 6;
+}
+#node-Ai {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 3px solid #78a2c2;
+    opacity: 1; 
+    background-image: url('Adobe_Illustrator.png') ;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: 5;
+}
+#node-Ps {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 3px solid #78a2c2;
+    opacity: 1; 
+    background-image: url('Adobe_Photoshop.png') ;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: 4;
+}
+#node-FL { 
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 3px solid #78a2c2;
+    opacity: 1; 
+    background-image: url('fl-fruit-logo.png') ;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
 
-
+}
+#node-VS {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        border: 3px solid #78a2c2;
+        opacity: 1; 
+        background-image: url('Visual_Studio_Code.png') ;
+        background-position: center;
+        background-size: 75px;
+        background-repeat: no-repeat;
+        z-index: 2;
+}
 /*
 
 
@@ -271,9 +380,7 @@ body, html {
     transform: translate(-50%, -50%); 
     
 }
-#node-kaya {
-    top: 5900px; left: 9600px; transform: translateX(-50%);
-}
+#node-kaya { top: 6100px; left: 8900px; transform: translateX(-50%);}
 
 #node-art { 
     z-index: 6; /* กำหนดให้สูงกว่า Node ทั่วไป (5) และ Node Center (10) */
@@ -283,17 +390,25 @@ body, html {
 }
 #node-volunteer { top: 5700px; left: 9600px; transform: translateX(-50%); }
 #node-eng-main { top: 5400px; left: 9200px; transform: translateY(-50%); }
-#node-work { top: 5400px; left: 9900px; transform: translateY(-50%); }
+#node-work { top: 5400px; left: 9900px; transform: translateY(-50%); z-index: 7;}
 #node-Roblox { top: 5600px; left: 9000px; transform: translateY(-50%); }
-#node-comp { top: 5400px; left: 10200px; transform: translateY(-50%); z-index: 2; }
-#node-FL { z-index: 4; /* ให้ Node ที่อยู่ข้างบนมันมี Z-index ต่ำกว่า */
+#node-comp { top: 5400px; left: 10200px; transform: translateY(-50%); z-index: 6; }
+#node-FL { z-index: 7; /* ให้ Node ที่อยู่ข้างบนมันมี Z-index ต่ำกว่า */
     top: 4750px; 
-    left: 9600px; 
+    left: 9300px; 
     transform: translateX(-50%); 
 }
 #node-Lua{top: 5500px; left: 8900px; transform: translateY(-50%);}
 #node-Luau{top: 5700px; left: 8900px; transform: translateY(-50%);}
-
+#node-rodo  { top: 5900px; left: 9400px; transform: translateX(-50%); }
+#node-kasian {top: 6100px; left: 9200px; transform: translateX(-50%);}
+#node-Pr { top: 4750px; left: 9500px; transform: translateX(-50%); }
+#node-Ai { top: 4750px; left: 9700px; transform: translateX(-50%); }
+#node-Ps { top: 4750px; left: 9900px; transform: translateX(-50%); }
+#node-VS { top: 5200px; left: 9000px; transform: translateY(-50%); }
+#node-water {top: 6100px; left: 9500px; transform: translateX(-50%);}
+#node-traff { top: 6400px; left: 8900px; transform: translateX(-50%); }
+#node-CFMT { top: 5200px; left: 10400px; transform: translateY(-50%); }
 
 
 

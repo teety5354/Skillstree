@@ -128,10 +128,21 @@ document.addEventListener('DOMContentLoaded', () => {
         { start: 'node-center', end: 'node-eng-main' },
         { start: 'node-center', end: 'node-work' },
         { start: 'node-eng-main', end: 'node-Roblox' },
+        { start: 'node-eng-main', end: 'node-VS' },
         { start: 'node-work', end: 'node-comp' },
+        { start: 'node-comp', end: 'node-CFMT' },
         { start: 'node-Roblox', end: 'node-Lua' },
         { start: 'node-Roblox', end: 'node-Luau' },
-        { start: 'node-volunteer', end: 'node-kaya' },
+        { start: 'node-volunteer', end: 'node-rodo' },
+        { start: 'node-rodo', end: 'node-kaya' },
+        { start: 'node-rodo', end: 'node-kasian' },
+        { start: 'node-rodo', end: 'node-water' },
+        { start: 'node-rodo', end: 'node-traff' },
+        { start: 'node-art', end: 'node-Pr' },
+        { start: 'node-art', end: 'node-Ai' },
+        { start: 'node-art', end: 'node-Ps' },
+        
+
 
 
         { start: 'node-art', end: 'node-FL' }
