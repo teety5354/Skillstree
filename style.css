@@ -112,7 +112,7 @@ body, html {
     border-radius: 50%;
     
     /* รูปภาพ: ใช้ไฟล์ที่คุณกำหนด */
-    background-image: url('10_P11.png'); 
+    background-image: url('Sound,Img/10_P11.png'); 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -126,7 +126,7 @@ body, html {
 }
 
 .profile-circle:hover {
-    background-image: url('1112.png'); 
+    background-image: url('Sound,Img/1112.png'); 
     /* เพิ่มเงาเรืองแสงเมื่อ Hover */
     box-shadow: 0 0 25px rgba(120, 162, 194, 0.8), 0 0 10px rgba(0, 0, 0, 0.1);
 }
