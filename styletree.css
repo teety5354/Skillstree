@@ -54,6 +54,7 @@ body, html {
     transition: transform 0.3s, box-shadow 0.3s;
     z-index: 5;
     opacity: 1; 
+    text-decoration: none;
     /*transition: opacity 0.8s ease-out, transform 0.3s, box-shadow 0.3s;*/
 }
 
@@ -110,6 +111,59 @@ body, html {
     transform: translate(-15px, -50%);
     z-index: 100;
 }
+/* --- Card Node Styling --- */
+
+.card-shape {
+    /* กำหนดขนาดใหญ่ขึ้นเพื่อให้ใส่รูปภาพได้ */
+    width: 200px; 
+    height: 250px;
+    border-radius: 8px; /* ขอบมนเล็กน้อย */
+    padding: 3px; /* ลบ padding เดิมออกเพื่อควบคุมพื้นที่เอง */
+    
+    /* B: จัดโครงสร้างภายในให้อยู่ในแนวตั้ง (คอลัมน์) */
+    display: flex;
+    flex-direction: column;
+    
+    /* C: ปรับสีพื้นหลังให้ดูเป็น Card ชัดเจน */
+    background-color: #F4E2DE; 
+    border: 3px solid rgb(185, 122, 122);
+}
+
+.card-content {
+    /* ใช้ flex 1 เพื่อให้ Card Content ขยายเต็มพื้นที่ */
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+
+.card-image-wrapper {
+    /* ส่วนรูปภาพ: ให้ใช้พื้นที่ด้านบนประมาณ 60-70% */
+    flex-grow: 1; /* ให้ยืดออกตามแนวตั้ง */
+    width: 100%;
+    overflow: hidden; /* ซ่อนส่วนที่เกินจากรูป */
+    border-radius: 8px 8px 8px 8px; /* ขอบมน */
+}
+
+.card-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* ทำให้รูปภาพคลุมพื้นที่โดยไม่บิดเบี้ยว */
+    display: block;
+}
+
+.card-text {
+    /* ส่วนข้อความ: พื้นที่ด้านล่าง */
+    width: 100%;
+    padding: 8px 10px; /* เพิ่ม padding ภายใน */
+    box-sizing: border-box;
+    font-size: 1rem;
+    font-weight: normal;
+    text-align: left; /* จัดข้อความชิดซ้าย */
+    text-decoration: none !important;
+    color: #555;
+    background-color: #F4E2DE; /* สีพื้นหลังเล็กน้อย */
+}
 
 /*
 
@@ -156,14 +210,37 @@ body, html {
     width: 70px;
     height: 70px;
     border-radius: 50%;
-    border: 3px solid #78a2c2;
+    border: 3px solid #ffc400;
     opacity: 1; 
     background-image: url('Roblox_Studio.png') ;
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
     z-index: 2;
-
+}
+#node-Lua {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 3px solid #78a2c2;
+    opacity: 1; 
+    background-image: url('Lua-Logo.png') ;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 2;
+}
+#node-Luau {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 3px solid #78a2c2;
+    opacity: 1; 
+    background-image: url('Luau_Logo.png') ;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 2;
 }
 
 
@@ -194,25 +271,28 @@ body, html {
     transform: translate(-50%, -50%); 
     
 }
-
+#node-kaya {
+    top: 5900px; left: 9600px; transform: translateX(-50%);
+}
 
 #node-art { 
     z-index: 6; /* กำหนดให้สูงกว่า Node ทั่วไป (5) และ Node Center (10) */
-    top: 5100px; 
+    top: 5050px; 
     left: 9600px; 
     transform: translateX(-50%);
 }
-#node-volunteer { top: 5650px; left: 9600px; transform: translateX(-50%); }
-#node-eng-main { top: 5400px; left: 9250px; transform: translateY(-50%); }
+#node-volunteer { top: 5700px; left: 9600px; transform: translateX(-50%); }
+#node-eng-main { top: 5400px; left: 9200px; transform: translateY(-50%); }
 #node-work { top: 5400px; left: 9900px; transform: translateY(-50%); }
 #node-Roblox { top: 5600px; left: 9000px; transform: translateY(-50%); }
-#node-comp { top: 5400px; left: 10200px; transform: translateY(-50%); }
+#node-comp { top: 5400px; left: 10200px; transform: translateY(-50%); z-index: 2; }
 #node-FL { z-index: 4; /* ให้ Node ที่อยู่ข้างบนมันมี Z-index ต่ำกว่า */
-    top: 4900px; 
+    top: 4750px; 
     left: 9600px; 
     transform: translateX(-50%); 
 }
-
+#node-Lua{top: 5500px; left: 8900px; transform: translateY(-50%);}
+#node-Luau{top: 5700px; left: 8900px; transform: translateY(-50%);}
 
 
 
@@ -230,7 +310,6 @@ body, html {
     pointer-events: none;
     width: 19200px; 
     height: 10800px;
-    viewBox: 0 0 19200 10800; 
 }
 
 .connection-line {
