@@ -1,12 +1,28 @@
 /* ในไฟล์ style-project.css */
+@keyframes slideGrid {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: -100px -100px; 
+    }
+}
 
-body {
-    background-color: #FAF5EF;
+body, html {
+    height: 100%;
     font-family: sans-serif;
+    background-color: #FAF5EF;
     color: #736055;
     min-height: 100vh;
     margin: 0;
     padding: 0;
+    background-image: 
+        linear-gradient(to right, rgb(185, 122, 122) 1px, transparent 1px),
+        linear-gradient(to bottom, rgb(185, 122, 122) 1px, transparent 1px);
+    
+    background-size: 100px 100px;
+    background-position: -1px -1px;
+    animation: slideGrid 15s linear infinite; 
 }
 
 .project-container {
@@ -22,13 +38,19 @@ body {
 .project-header {
     width: 100%;
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     padding: 10px;
+    /* กำหนดความหนาและสีของ Stroke */
+    -webkit-text-stroke-width: 3px;
+    -webkit-text-stroke-color: #736055;
+    
+
 }
 
 .project-title {
-    font-size: clamp(1.5rem, 4vw, 2.5rem); /* ปรับขนาดตัวอักษรตามหน้าจอ */
-    color: #4E7DA6;
+    font-size: clamp(2rem, 5vw, 5rem); /* ปรับขนาดตัวอักษรตามหน้าจอ */
+    color: #F4E2DE;
+    margin: 0px;
 }
 
 /* --- Image Slider (Carousel) --- */
@@ -107,6 +129,7 @@ body {
     color: #736055;
     margin-bottom: -10px;
     margin-top: -15px;
+    
 }
 
 .navigation-buttons {
