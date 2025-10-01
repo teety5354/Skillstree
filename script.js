@@ -141,6 +141,9 @@ document.addEventListener('DOMContentLoaded', () => {
         { start: 'node-art', end: 'node-Pr' },
         { start: 'node-art', end: 'node-Ai' },
         { start: 'node-art', end: 'node-Ps' },
+        { start: 'node-VS', end: 'node-HTML' },
+        { start: 'node-VS', end: 'node-CSS' },
+        { start: 'node-VS', end: 'node-JS' },
         
 
 

@@ -41,14 +41,14 @@ body, html {
     margin-bottom: 10px;
     padding: 10px;
     /* กำหนดความหนาและสีของ Stroke */
-    -webkit-text-stroke-width: 3px;
+    -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: #736055;
     
 
 }
 
 .project-title {
-    font-size: clamp(2rem, 5vw, 5rem); /* ปรับขนาดตัวอักษรตามหน้าจอ */
+    font-size: clamp(1rem, 5vw, 5rem); /* ปรับขนาดตัวอักษรตามหน้าจอ */
     color: #F4E2DE;
     margin: 0px;
 }

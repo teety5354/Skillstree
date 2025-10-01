@@ -353,6 +353,42 @@ body, html {
         background-repeat: no-repeat;
         z-index: 2;
 }
+#node-HTML {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        border: 3px solid #78a2c2;
+        opacity: 1; 
+        background-image: url('Sound,Img/HTML.png') ;
+        background-position: center;
+        background-size: 75px;
+        background-repeat: no-repeat;
+        z-index: 3;
+}
+#node-CSS {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        border: 3px solid #78a2c2;
+        opacity: 1; 
+        background-image: url('Sound,Img/CSS.png') ;
+        background-position: center;
+        background-size: 80px;
+        background-repeat: no-repeat;
+        z-index: 5;
+}
+#node-JS {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        border: 3px solid #78a2c2;
+        opacity: 1; 
+        background-image: url('Sound,Img/JS.png') ;
+        background-position: center;
+        background-size: 57px;
+        background-repeat: no-repeat;
+        z-index: 4;
+}
 /*
 
 
@@ -389,10 +425,11 @@ body, html {
     transform: translateX(-50%);
 }
 #node-volunteer { top: 5700px; left: 9600px; transform: translateX(-50%); }
-#node-eng-main { top: 5400px; left: 9200px; transform: translateY(-50%); }
+#node-eng-main { top: 5400px; left: 9200px; transform: translateY(-50%); z-index: 2;}
+#info-eng {z-index: 100;}
 #node-work { top: 5400px; left: 9900px; transform: translateY(-50%); z-index: 7;}
 #node-Roblox { top: 5600px; left: 9000px; transform: translateY(-50%); }
-#node-comp { top: 5400px; left: 10200px; transform: translateY(-50%); z-index: 6; }
+#node-comp { top: 5200px; left: 10200px; transform: translateY(-50%); z-index: 6; }
 #node-FL { z-index: 7; /* ให้ Node ที่อยู่ข้างบนมันมี Z-index ต่ำกว่า */
     top: 4750px; 
     left: 9300px; 
@@ -405,10 +442,13 @@ body, html {
 #node-Pr { top: 4750px; left: 9500px; transform: translateX(-50%); }
 #node-Ai { top: 4750px; left: 9700px; transform: translateX(-50%); }
 #node-Ps { top: 4750px; left: 9900px; transform: translateX(-50%); }
-#node-VS { top: 5200px; left: 9000px; transform: translateY(-50%); }
 #node-water {top: 6100px; left: 9500px; transform: translateX(-50%);}
 #node-traff { top: 6400px; left: 8900px; transform: translateX(-50%); }
-#node-CFMT { top: 5200px; left: 10400px; transform: translateY(-50%); }
+#node-CFMT { top: 5200px; left: 10600px; transform: translateY(-50%); }
+#node-VS { top: 5200px; left: 9000px; transform: translateY(-50%); }
+#node-HTML { top: 5200px; left: 8800px; transform: translateY(-50%); }
+#node-CSS { top: 5050px; left: 8850px; transform: translateY(-50%); }
+#node-JS { top: 5000px; left: 9000px; transform: translateY(-50%); }
 
 
 
