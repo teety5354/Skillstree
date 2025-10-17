@@ -79,7 +79,7 @@ body, html {
 
 .node-info {
     position: absolute;
-    width: 320px;
+    width: 300px ;
     padding: 15px;
     background-color: white;
     border: 1px solid #ddd;
@@ -87,7 +87,7 @@ body, html {
     border-radius: 8px;
     font-size: 1.2rem;
     font-weight: normal;
-    text-align: left;
+    text-align: center;
     color: #555;
     z-index: 100; /* **[จุดสำคัญ] ทำให้ Node Info ลอยอยู่เหนือทุก Node และเส้น** */
     
@@ -200,6 +200,8 @@ body, html {
     max-width: 300px;  /* ความกว้างสูงสุด (กว้างกว่าสูงเล็กน้อย) */
     
     z-index: 1;
+    border-radius: 15px; /* เพิ่มค่านี้เพื่อให้มุมมนมากขึ้น เช่น 15px */
+    overflow: hidden;
 
     height: auto;      /* ให้ความสูงปรับตามอัตราส่วน */
     width: auto;       /* ให้ความกว้างปรับตามอัตราส่วน */
@@ -220,6 +222,7 @@ body, html {
 }
 .flexible-image-node .node-info {
     /* Overwrite ให้ตำแหน่ง Info Box อยู่ด้านขวาของ Node */
+    position: fixed;
     top: 50%;
     left: 100%;
     right: auto;
@@ -416,6 +419,7 @@ body, html {
     transform: translate(-50%, -50%); 
     
 }
+#info-center {text-align: left; width: 320px;}
 #node-kaya { top: 6100px; left: 8900px; transform: translateX(-50%);}
 
 #node-art { 
@@ -427,28 +431,31 @@ body, html {
 #node-volunteer { top: 5700px; left: 9600px; transform: translateX(-50%); }
 #node-eng-main { top: 5400px; left: 9200px; transform: translateY(-50%); z-index: 2;}
 #info-eng {z-index: 100;}
+#node-hardware { top: 5200px; left: 9000px; transform: translateY(-50%); z-index: 2;}
+#node-software { top: 5600px; left: 9000px; transform: translateY(-50%); z-index: 2;}
+#info-software {z-index: 150;}
 #node-work { top: 5400px; left: 9900px; transform: translateY(-50%); z-index: 7;}
-#node-Roblox { top: 5600px; left: 9000px; transform: translateY(-50%); }
+#node-Roblox { top: 5800px; left: 8800px; transform: translateY(-50%); }
 #node-comp { top: 5200px; left: 10200px; transform: translateY(-50%); z-index: 6; }
-#node-FL { z-index: 7; /* ให้ Node ที่อยู่ข้างบนมันมี Z-index ต่ำกว่า */
-    top: 4750px; 
-    left: 9300px; 
-    transform: translateX(-50%); 
-}
-#node-Lua{top: 5500px; left: 8900px; transform: translateY(-50%);}
-#node-Luau{top: 5700px; left: 8900px; transform: translateY(-50%);}
-#node-rodo  { top: 5900px; left: 9400px; transform: translateX(-50%); }
+#node-activity { top: 5600px; left: 10200px; transform: translateY(-50%); z-index: 6; }
+#node-FL { z-index: 7;top: 4750px; left: 9300px; transform: translateX(-50%); }
+#node-Lua{top: 5700px; left: 8700px; transform: translateY(-50%);}
+#node-Luau{top: 5900px; left: 8700px; transform: translateY(-50%);}
+#node-rodo  { top: 5900px; left: 9400px; transform: translateX(-50%); z-index: 100;}
+#node-public  { top: 5900px; left: 9800px; transform: translateX(-50%);}
 #node-kasian {top: 6100px; left: 9200px; transform: translateX(-50%);}
 #node-Pr { top: 4750px; left: 9500px; transform: translateX(-50%); }
 #node-Ai { top: 4750px; left: 9700px; transform: translateX(-50%); }
 #node-Ps { top: 4750px; left: 9900px; transform: translateX(-50%); }
 #node-water {top: 6100px; left: 9500px; transform: translateX(-50%);}
 #node-traff { top: 6400px; left: 8900px; transform: translateX(-50%); }
-#node-CFMT { top: 5200px; left: 10600px; transform: translateY(-50%); }
-#node-VS { top: 5200px; left: 9000px; transform: translateY(-50%); }
-#node-HTML { top: 5200px; left: 8800px; transform: translateY(-50%); }
-#node-CSS { top: 5050px; left: 8850px; transform: translateY(-50%); }
-#node-JS { top: 5000px; left: 9000px; transform: translateY(-50%); }
+#node-CFMT { top: 5200px; left: 10600px; transform: translateY(-70%); }
+#node-VS { top: 5400px; left: 8800px; transform: translateY(-50%); }
+#node-HTML { top: 5600px; left: 8700px; transform: translateY(-50%); }
+#info-HTML {z-index: 1;}
+#node-CSS { top: 5520px; left: 8600px; transform: translateY(-50%); }
+#node-JS { top: 5400px; left: 8550px; transform: translateY(-50%); }
+#node-POSN { top: 5600px; left: 10600px; transform: translate(-100%,-50%); }
 
 
 

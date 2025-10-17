@@ -127,13 +127,18 @@ document.addEventListener('DOMContentLoaded', () => {
         { start: 'node-center', end: 'node-volunteer' },
         { start: 'node-center', end: 'node-eng-main' },
         { start: 'node-center', end: 'node-work' },
-        { start: 'node-eng-main', end: 'node-Roblox' },
-        { start: 'node-eng-main', end: 'node-VS' },
+        { start: 'node-eng-main', end: 'node-software' },
+        { start: 'node-software', end: 'node-VS' },
+        { start: 'node-software', end: 'node-Roblox' },
+        { start: 'node-eng-main', end: 'node-hardware' },
         { start: 'node-work', end: 'node-comp' },
+        { start: 'node-work', end: 'node-activity' },
+        { start: 'node-activity', end: 'node-POSN' },
         { start: 'node-comp', end: 'node-CFMT' },
         { start: 'node-Roblox', end: 'node-Lua' },
         { start: 'node-Roblox', end: 'node-Luau' },
         { start: 'node-volunteer', end: 'node-rodo' },
+        { start: 'node-volunteer', end: 'node-public' },
         { start: 'node-rodo', end: 'node-kaya' },
         { start: 'node-rodo', end: 'node-kasian' },
         { start: 'node-rodo', end: 'node-water' },
@@ -144,6 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { start: 'node-VS', end: 'node-HTML' },
         { start: 'node-VS', end: 'node-CSS' },
         { start: 'node-VS', end: 'node-JS' },
+        
         
 
 
