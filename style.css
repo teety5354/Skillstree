@@ -170,41 +170,51 @@ body, html {
 /* -------------------
    ส่วนท้าย (Footer)
    ------------------- */
-
-.footer {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    font-size: 0.9rem;
-    color: #736055;
-    
-    /* อนิเมชั่นเริ่มต้น */
-    opacity: 0;
-    animation: fadeInUp 0.8s ease-out 0.8s;
-    animation-fill-mode: forwards;
-}
-
 .social-links {
     display: flex;
     gap: 15px;
-}
 
+}
 .social-icon {
     font-size: 75px;
-    color: #242424; 
     text-decoration: none;
     transition: font-size 0.3s, transform 0.2s;
 }
-.social-links .fa-youtube-square {
-    color: #ff0000;
-}
-
 .social-icon:hover {
-    font-size: 85px;
-    transform: scale(1.1); /* เพิ่มลูกเล่นขยายเล็กน้อย */
+    font-size: 85px; /* ทำให้ Icon ขยายใหญ่ขึ้น */
+    transform: scale(1.1); /* ขยายเล็กน้อย */
 }
 
-.copyright {
-    align-self: flex-end;
+/* 1. YouTube (ใช้ color) */
+.social-icon.youtube i {
+    color: #ff0000; /* สีแดง YouTube */
+}
+
+/* 2. GitHub (ใช้ color) */
+.social-icon.github i {
+    color: #333333; /* สีดำ/เทาเข้ม GitHub */
+}
+
+/* 3. Instagram (ใช้ color) */
+.social-icon.instagram i {
+    /* ใช้สีที่ใกล้เคียงที่สุด หรือใช้สีม่วง */
+    color: #C13584; 
+}
+
+/* 4. Facebook (ใช้ color) */
+.social-icon.facebook i {
+    color: #3b5998; /* สีน้ำเงิน Facebook */
+}
+
+
+
+/* --- การปรับสำหรับมือถือ (ตัวเลือกเสริม) --- */
+@media (max-width: 768px) {
+    .social-links {
+        bottom: 10px;
+        left: 10px;
+        gap: 10px;
+        /* ถ้าต้องการให้เป็นแนวนอนบนมือถือ: */
+        /* flex-direction: row; */
+    }
 }

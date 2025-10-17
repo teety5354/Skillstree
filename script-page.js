@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // เริ่มต้นให้แสดงรูปแรก
     updateSlider();
 });
+
 document.addEventListener('DOMContentLoaded', () => {
     
     const bgMusic = document.getElementById('bg-music');
