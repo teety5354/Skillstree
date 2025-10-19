@@ -132,6 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { start: 'node-software', end: 'node-Roblox' },
         { start: 'node-software', end: 'node-CB' },
         { start: 'node-eng-main', end: 'node-hardware' },
+        { start: 'node-hardware', end: 'node-Robot' },
         { start: 'node-work', end: 'node-comp' },
         { start: 'node-work', end: 'node-activity' },
         { start: 'node-activity', end: 'node-POSN' },
