@@ -190,6 +190,7 @@ body, html {
     cursor: pointer;
     z-index: 5;
     transition: transform 0.3s, box-shadow 0.3s;
+    vertical-align: top;
 }
 
 .flexible-image-node .node-image {
@@ -392,6 +393,42 @@ body, html {
         background-repeat: no-repeat;
         z-index: 4;
 }
+#node-CB {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        border: 3px solid #78a2c2;
+        opacity: 1; 
+        background-image: url('Sound,Img/Codeblocks_logo1.png') ;
+        background-position: center;
+        background-size: 75px;
+        background-repeat: no-repeat;
+        z-index: 4;
+}
+#node-C {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        border: 3px solid #78a2c2;
+        opacity: 1; 
+        background-image: url('Sound,Img/C_Logo.png') ;
+        background-position: center;
+        background-size: 75px;
+        background-repeat: no-repeat;
+        z-index: 4;
+}
+#node-Cpp {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        border: 3px solid #78a2c2;
+        opacity: 1; 
+        background-image: url('Sound,Img/ISO_C++_Logo.svg.png') ;
+        background-position: center;
+        background-size: 75px;
+        background-repeat: no-repeat;
+        z-index: 5;
+}
 /*
 
 
@@ -436,26 +473,33 @@ body, html {
 #info-software {z-index: 150;}
 #node-work { top: 5400px; left: 9900px; transform: translateY(-50%); z-index: 7;}
 #node-Roblox { top: 5800px; left: 8800px; transform: translateY(-50%); }
-#node-comp { top: 5200px; left: 10200px; transform: translateY(-50%); z-index: 6; }
-#node-activity { top: 5600px; left: 10200px; transform: translateY(-50%); z-index: 6; }
+#node-comp { top: 5200px; left: 10200px; transform: translate(-50%, -50%); z-index: 99; }
+#node-activity { top: 5600px; left: 10200px; transform: translate(-50%, -50%); z-index: 99; }
 #node-FL { z-index: 7;top: 4750px; left: 9300px; transform: translateX(-50%); }
 #node-Lua{top: 5700px; left: 8700px; transform: translateY(-50%);}
 #node-Luau{top: 5900px; left: 8700px; transform: translateY(-50%);}
 #node-rodo  { top: 5900px; left: 9400px; transform: translateX(-50%); z-index: 100;}
 #node-public  { top: 5900px; left: 9800px; transform: translateX(-50%);}
+#node-chailane  { top: 6100px; left: 9800px; transform: translateX(-50%);}
 #node-kasian {top: 6100px; left: 9200px; transform: translateX(-50%);}
 #node-Pr { top: 4750px; left: 9500px; transform: translateX(-50%); }
 #node-Ai { top: 4750px; left: 9700px; transform: translateX(-50%); }
 #node-Ps { top: 4750px; left: 9900px; transform: translateX(-50%); }
 #node-water {top: 6100px; left: 9500px; transform: translateX(-50%);}
 #node-traff { top: 6400px; left: 8900px; transform: translateX(-50%); }
-#node-CFMT { top: 5200px; left: 10600px; transform: translateY(-70%); }
+#node-CFMT { top: 5200px; left: 10600px; transform: translate(-50%, -50%); z-index: 70;}
+#node-AOFH { top: 5200px; left: 10800px; transform: translate(-50%, -50%); z-index: 69; }
+#node-CB { top: 5650px; left: 8500px; transform: translateY(-50%); }
+#node-C { top: 5750px; left: 8400px; transform: translateY(-50%); }
+#node-Cpp  { top: 5550px; left: 8400px; transform: translateY(-50%); }
 #node-VS { top: 5400px; left: 8800px; transform: translateY(-50%); }
 #node-HTML { top: 5600px; left: 8700px; transform: translateY(-50%); }
 #info-HTML {z-index: 1;}
 #node-CSS { top: 5520px; left: 8600px; transform: translateY(-50%); }
 #node-JS { top: 5400px; left: 8550px; transform: translateY(-50%); }
-#node-POSN { top: 5600px; left: 10600px; transform: translate(-100%,-50%); }
+#node-POSN { top: 5600px; left: 9990px; transform: translate(-50%, -50%); z-index: 70;}
+#node-delta { top: 5600px; left: 10200px; transform: translate(-50%, -50%); z-index: 69;}
+#node-Bas { top: 4900px; left: 10600px; transform: translate(-50%, -50%); z-index: 99;}
 
 
 
