@@ -161,16 +161,34 @@ body, html {
 
 .home-button {
     background-color: #4E7DA6;
+    border-radius: 50px;
+    border: 3px solid #F4E2DE;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    
+    transition: background-color 0.3s, transform 0.1s, font-size 0.5s;
+    animation: pulse 2s ease-in-out infinite; 
 }
 .home-button:hover {
-    background-color: #3b668f;
+    background-color: #6a95b3;
+    transform: translateY(-4px);
+    font-size: 1.5rem;
+    animation: none;
 }
 
 .tree-button {
     background-color: #736055;
+    border-radius: 50px;
+    border: 3px solid #F4E2DE;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    
+    transition: background-color 0.3s, transform 0.1s, font-size 0.5s;
+    animation: pulse 2s ease-in-out infinite; 
 }
 .tree-button:hover {
-    background-color: #5d4d44;
+    background-color: #917e73;
+    transform: translateY(-4px);
+    font-size: 1.5rem;
+    animation: none;
 }
 .info-header{
     font-size: 2rem;
