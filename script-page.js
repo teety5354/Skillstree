@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // องค์ประกอบทั้งหมดที่ต้องการให้มีเสียง Hover
     const hoverElements = document.querySelectorAll(
-        '.profile-circle, .start-button, .social-icon'
+        '.nav-button.home-button, .nav-button.tree-button'
     );
 
     // ใส่ Listener ให้กับทุกองค์ประกอบ
