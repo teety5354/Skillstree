@@ -76,8 +76,73 @@ document.addEventListener('DOMContentLoaded', () => {
             // ลบ Listener ทิ้งเมื่อมีการเล่นครั้งแรก
             document.removeEventListener('click', playMusicOnInteraction);
             document.removeEventListener('touchstart', playMusicOnInteraction);
+
+
+
         }
+        // --- Logic สำหรับ Modern Audio Player ---
+const audio = document.getElementById('audio-source');
+const playBtn = document.getElementById('play-pause-btn');
+const playIcon = playBtn.querySelector('i');
+const currentTimeEl = document.getElementById('current-time');
+const durationEl = document.getElementById('duration');
+
+// ฟังก์ชันสำหรับ "เล่น BG ต่อ" (สร้างแยกไว้ให้เรียกใช้ง่ายๆ)
+const resumeBackgroundMusic = () => {
+    if (hasInteracted && bgMusic.paused) {
+        bgMusic.play().catch(e => console.log("BG Music resume blocked"));
+    }
+};
+
+// ฟังก์ชันสำหรับ "หยุด BG"
+const pauseBackgroundMusic = () => {
+    if (!bgMusic.paused) {
+        bgMusic.pause();
+    }
+};
+
+// ปุ่ม Play/Pause ของเครื่องเล่นเพลง
+playBtn.addEventListener('click', (e) => {
+    e.stopPropagation(); 
+    
+    if (audio.paused) {
+        // --- จังหวะที่กำลังจะเล่นเพลงใน Player ---
+        pauseBackgroundMusic(); // 1. สั่งหยุด BG Music
+        audio.play();           // 2. เล่นเพลงใน Player
+        playIcon.classList.replace('fa-play', 'fa-pause');
+    } else {
+        // --- จังหวะที่กดหยุดเพลงใน Player ---
+        audio.pause();          // 1. หยุดเพลงใน Player
+        resumeBackgroundMusic(); // 2. เล่น BG Music ต่อ
+        playIcon.classList.replace('fa-pause', 'fa-play');
+    }
+});
+
+// เมื่อเพลงในเครื่องเล่น "จบลง" (ended) ให้ BG กลับมาเล่นด้วย
+audio.addEventListener('ended', () => {
+    playIcon.classList.replace('fa-pause', 'fa-play');
+    resumeBackgroundMusic(); // เล่น BG Music ต่อทันทีที่เพลงจบ
+});
+
+// (โค้ดส่วนเวลาด้านล่างนี้คงเดิม)
+const formatTime = (time) => {
+    const min = Math.floor(time / 60);
+    const sec = Math.floor(time % 60);
+    return `${min}:${sec.toString().padStart(2, '0')}`;
+};
+
+audio.addEventListener('timeupdate', () => {
+    currentTimeEl.textContent = formatTime(audio.currentTime);
+});
+
+audio.addEventListener('loadedmetadata', () => {
+    durationEl.textContent = formatTime(audio.duration);
+});
+    
+        
     };
+    
+
     
     // ติดตั้ง Listener เพื่อรอการโต้ตอบครั้งแรก
     document.addEventListener('click', playMusicOnInteraction);
@@ -157,6 +222,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { start: 'node-VS', end: 'node-JS' },
         { start: 'node-CB', end: 'node-C' },
         { start: 'node-CB', end: 'node-Cpp' },
+        { start: 'node-FL', end: 'FL1' },
         
         
 

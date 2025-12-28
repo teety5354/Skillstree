@@ -232,6 +232,72 @@ body, html {
     z-index: 150; /* เพิ่ม Z-index ให้สูงกว่า .node-info ปกติเล็กน้อยเพื่อความชัวร์ */
 }
 
+/* --- สไตล์สำหรับ Modern Audio Player Bar --- */
+
+/* คอนเทนเนอร์หลักของแถบเครื่องเล่น */
+.audio-player-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 100;
+    
+    /* **[เปลี่ยนสีที่นี่]** สีพื้นหลังของแถบ (ผมใช้สีน้ำตาลเข้มให้เข้าธีม) */
+    background-color: #4E342E; 
+    /* สีตัวอักษรและไอคอน (สีครีมอ่อน) */
+    color: #FAF5EF; 
+    
+    padding: 10px 10px;
+    border-radius: 5px; /* มุมมนเล็กน้อย */
+    width: 300px; /* ความกว้างของแถบ */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3); /* เงาให้ดูมีมิติ */
+    font-family: sans-serif;
+
+    /* การจัดตำแหน่งบน Skill Tree Canvas */
+    position: absolute;
+
+}
+
+/* สไตล์ปุ่ม Play และ Volume */
+.player-btn {
+    background: none;
+    border: none;
+    color: inherit; /* ใช้สีเดียวกับ parent (#FAF5EF) */
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 5px;
+    outline: none;
+    transition: color 0.2s, transform 0.1s;
+}
+
+.player-btn:hover {
+    /* **[เปลี่ยนสี hover ที่นี่]** เช่น สีชมพู-น้ำตาลที่คุณเคยใช้ */
+    color: #b97a7a; 
+}
+
+.player-btn:active {
+    transform: scale(0.95); /* ย่อลงนิดนึงตอนกด */
+}
+
+/* พื้นที่แสดงเวลา */
+.time-display {
+    font-size: 0.9rem;
+    margin: 0 5px;
+    min-width: 50px; /* จองพื้นที่ไว้ไม่ให้ขยับไปมา */
+    text-align: center;
+}
+
+/* พื้นที่ชื่อเพลง */
+.song-info {
+    flex-grow: 1; /* ให้ขยายเต็มพื้นที่ว่างตรงกลาง */
+    text-align: center;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; /* ถ้าชื่อยาวเกินให้เป็น ... */
+    margin: 0 5px;
+}
+
+
 /*
 
 
@@ -488,6 +554,7 @@ body, html {
 #node-comp { top: 5200px; left: 10200px; transform: translate(-50%, -50%); z-index: 99; }
 #node-activity { top: 5600px; left: 10200px; transform: translate(-50%, -50%); z-index: 99; }
 #node-FL { z-index: 7;top: 4750px; left: 9300px; transform: translateX(-50%); }
+#FL1 { z-index: 7;top: 4650px; left: 9200px; transform: translateX(-50%); z-index: 100;}
 #node-Lua{top: 5700px; left: 8700px; transform: translateY(-50%);}
 #node-Luau{top: 5900px; left: 8700px; transform: translateY(-50%);}
 #node-rodo  { top: 5900px; left: 9400px; transform: translateX(-50%); z-index: 100;}
@@ -513,6 +580,7 @@ body, html {
 #node-delta { top: 5600px; left: 10000px; transform: translate(-50%, -50%); z-index: 69;}
 #node-Bas { top: 4900px; left: 10600px; transform: translate(-50%, -50%); z-index: 99;}
 #node-Robot { top: 5000px; left: 8800px; transform: translateY(-50%); }
+
 
 
 
