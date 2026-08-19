@@ -80,63 +80,93 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
         }
-        // --- Logic สำหรับ Modern Audio Player ---
-const audio = document.getElementById('audio-source');
-const playBtn = document.getElementById('play-pause-btn');
-const playIcon = playBtn.querySelector('i');
-const currentTimeEl = document.getElementById('current-time');
-const durationEl = document.getElementById('duration');
+// --- Logic สำหรับ Modern Audio Player (แบบรองรับหลาย Node) ---
+const audioPlayers = document.querySelectorAll('.audio-player-bar');
 
-// ฟังก์ชันสำหรับ "เล่น BG ต่อ" (สร้างแยกไว้ให้เรียกใช้ง่ายๆ)
-const resumeBackgroundMusic = () => {
-    if (hasInteracted && bgMusic.paused) {
-        bgMusic.play().catch(e => console.log("BG Music resume blocked"));
-    }
-};
-
-// ฟังก์ชันสำหรับ "หยุด BG"
-const pauseBackgroundMusic = () => {
-    if (!bgMusic.paused) {
-        bgMusic.pause();
-    }
-};
-
-// ปุ่ม Play/Pause ของเครื่องเล่นเพลง
-playBtn.addEventListener('click', (e) => {
-    e.stopPropagation(); 
-    
-    if (audio.paused) {
-        // --- จังหวะที่กำลังจะเล่นเพลงใน Player ---
-        pauseBackgroundMusic(); // 1. สั่งหยุด BG Music
-        audio.play();           // 2. เล่นเพลงใน Player
-        playIcon.classList.replace('fa-play', 'fa-pause');
-    } else {
-        // --- จังหวะที่กดหยุดเพลงใน Player ---
-        audio.pause();          // 1. หยุดเพลงใน Player
-        resumeBackgroundMusic(); // 2. เล่น BG Music ต่อ
-        playIcon.classList.replace('fa-pause', 'fa-play');
-    }
-});
-
-// เมื่อเพลงในเครื่องเล่น "จบลง" (ended) ให้ BG กลับมาเล่นด้วย
-audio.addEventListener('ended', () => {
-    playIcon.classList.replace('fa-pause', 'fa-play');
-    resumeBackgroundMusic(); // เล่น BG Music ต่อทันทีที่เพลงจบ
-});
-
-// (โค้ดส่วนเวลาด้านล่างนี้คงเดิม)
+// ฟังก์ชันแปลงเวลา
 const formatTime = (time) => {
+    if (isNaN(time)) return "0:00";
     const min = Math.floor(time / 60);
     const sec = Math.floor(time % 60);
     return `${min}:${sec.toString().padStart(2, '0')}`;
 };
 
-audio.addEventListener('timeupdate', () => {
-    currentTimeEl.textContent = formatTime(audio.currentTime);
-});
+// วนลูปจัดการเครื่องเล่นทุกอันที่หาเจอ
+audioPlayers.forEach(player => {
+    // ค้นหา Element ต่างๆ "เฉพาะภายใน Player กล่องนี้เท่านั้น"
+    const audio = player.querySelector('.audio-source');
+    const playBtn = player.querySelector('.play-pause-btn');
+    const playIcon = playBtn.querySelector('i');
+    const currentTimeEl = player.querySelector('.current-time');
+    const durationEl = player.querySelector('.duration');
+    const resetBtn = player.querySelector('.reset-btn');
 
-audio.addEventListener('loadedmetadata', () => {
-    durationEl.textContent = formatTime(audio.duration);
+    if (!audio || !playBtn) return; // ป้องกัน Error ถ้าดึงข้อมูลมาไม่ครบ
+
+    playBtn.addEventListener('click', (e) => {
+        e.stopPropagation(); // กันไม่ให้ไปโดนการลากของ Skill Tree
+
+        if (audio.paused) {
+            // 1. หยุดเพลง Background
+            if (!bgMusic.paused) {
+                bgMusic.pause();
+            }
+
+            // 2. หยุดเพลงในโหนด "อื่น" ทั้งหมดที่อาจจะกำลังเล่นอยู่
+            document.querySelectorAll('.audio-source').forEach(otherAudio => {
+                if (otherAudio !== audio && !otherAudio.paused) {
+                    otherAudio.pause();
+                    // เปลี่ยนไอคอนของโหนดที่โดนสั่งหยุด ให้กลับเป็นปุ่ม Play
+                    const otherIcon = otherAudio.closest('.audio-player-bar').querySelector('.play-pause-btn i');
+                    if (otherIcon) otherIcon.classList.replace('fa-pause', 'fa-play');
+                }
+            });
+
+            // 3. เล่นเพลงในโหนดที่เพิ่งกด
+            audio.play();
+            playIcon.classList.replace('fa-play', 'fa-pause');
+        } else {
+            // ถ้ากำลังเล่นอยู่แล้วกดอีกครั้ง คือการ "หยุดเพลง"
+            audio.pause();
+            playIcon.classList.replace('fa-pause', 'fa-play');
+            
+            // เมื่อหยุดเพลง ให้กลับไปเล่น BG Music ต่อ
+            if (hasInteracted) {
+                bgMusic.play().catch(err => console.log("BG Music resume blocked"));
+            }
+        }
+    });
+
+    // อัปเดตเวลา
+    audio.addEventListener('timeupdate', () => {
+        if (currentTimeEl) currentTimeEl.textContent = formatTime(audio.currentTime);
+    });
+
+    // แสดงเวลาทั้งหมดเมื่อโหลดไฟล์เสียงเสร็จ
+    audio.addEventListener('loadedmetadata', () => {
+        if (durationEl) durationEl.textContent = formatTime(audio.duration);
+    });
+
+    // เมื่อจบเพลงให้ปุ่มเด้งกลับ และเปิดเพลง BG อัตโนมัติ
+    audio.addEventListener('ended', () => {
+        playIcon.classList.replace('fa-pause', 'fa-play');
+        if (hasInteracted) {
+            bgMusic.play().catch(err => console.log("BG Music resume blocked"));
+        }
+ 
+    });
+       //รีเพลงใหม่
+        if (resetBtn) {
+        resetBtn.addEventListener('click', (e) => {
+            e.stopPropagation(); // กันไม่ให้ไปโดนการลากของ Skill Tree
+            
+            audio.currentTime = 0; // ย้อนกลับไปเริ่มต้นที่วินาทีที่ 0
+            
+            // อัปเดตตัวเลขเวลาบนหน้าจอทันที
+            if (currentTimeEl) {
+                currentTimeEl.textContent = formatTime(0);
+            }
+        });}
 });
     
         
@@ -198,6 +228,8 @@ audio.addEventListener('loadedmetadata', () => {
         { start: 'node-software', end: 'node-CB' },
         { start: 'node-eng-main', end: 'node-hardware' },
         { start: 'node-hardware', end: 'node-Robot' },
+        { start: 'node-hardware', end: 'node-CANSAT' },
+        { start: 'node-hardware', end: 'node-Cute' },
         { start: 'node-work', end: 'node-comp' },
         { start: 'node-work', end: 'node-activity' },
         { start: 'node-activity', end: 'node-POSN' },
@@ -205,6 +237,8 @@ audio.addEventListener('loadedmetadata', () => {
         { start: 'node-comp', end: 'node-CFMT' },
         { start: 'node-comp', end: 'node-Bas' },
         { start: 'node-CFMT', end: 'node-AOFH' },
+        { start: 'node-AOFH', end: 'node-CANSATcomp' },
+        { start: 'node-CANSATcomp', end: 'node-WRG2026' },
         { start: 'node-Roblox', end: 'node-Lua' },
         { start: 'node-Roblox', end: 'node-Luau' },
         { start: 'node-volunteer', end: 'node-rodo' },
@@ -223,6 +257,7 @@ audio.addEventListener('loadedmetadata', () => {
         { start: 'node-CB', end: 'node-C' },
         { start: 'node-CB', end: 'node-Cpp' },
         { start: 'node-FL', end: 'FL1' },
+        { start: 'FL1', end: 'FL2' },
         
         
 

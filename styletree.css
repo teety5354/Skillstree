@@ -507,6 +507,30 @@ body, html {
         background-repeat: no-repeat;
         z-index: 5;
 }
+#node-CANSAT{
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        border: 3px solid #78a2c2;
+        opacity: 1; 
+        background-image: url('Sound,Img/CANSAT1.webp') ;
+        background-position: center;
+        background-size: 90px;
+        background-repeat: no-repeat;
+        z-index: 5;
+}
+#node-Cute{
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        border: 3px solid #78a2c2;
+        opacity: 1; 
+        background-image: url('Sound,Img/Cute.webp') ;
+        background-position: center;
+        background-size: 180px;
+        background-repeat: no-repeat;
+        z-index: 5;
+}
 /*
 
 
@@ -555,6 +579,7 @@ body, html {
 #node-activity { top: 5600px; left: 10200px; transform: translate(-50%, -50%); z-index: 99; }
 #node-FL { z-index: 7;top: 4750px; left: 9300px; transform: translateX(-50%); }
 #FL1 { z-index: 7;top: 4650px; left: 9200px; transform: translateX(-50%); z-index: 100;}
+#FL2 { z-index: 7;top: 4550px; left: 9200px; transform: translateX(-50%); z-index: 100;}
 #node-Lua{top: 5700px; left: 8700px; transform: translateY(-50%);}
 #node-Luau{top: 5900px; left: 8700px; transform: translateY(-50%);}
 #node-rodo  { top: 5900px; left: 9400px; transform: translateX(-50%); z-index: 100;}
@@ -576,10 +601,14 @@ body, html {
 #info-HTML {z-index: 1;}
 #node-CSS { top: 5520px; left: 8600px; transform: translateY(-50%); }
 #node-JS { top: 5400px; left: 8550px; transform: translateY(-50%); }
-#node-POSN { top: 5600px; left: 9690px; transform: translate(-50%, -50%); z-index: 70;}
-#node-delta { top: 5600px; left: 10000px; transform: translate(-50%, -50%); z-index: 69;}
+#node-POSN { top: 5600px; left: 9100px; transform: translate(-50%, -50%); z-index: 70;}
+#node-delta { top: 5600px; left: 9370px; transform: translate(-50%, -50%); z-index: 69;}
 #node-Bas { top: 4900px; left: 10600px; transform: translate(-50%, -50%); z-index: 99;}
 #node-Robot { top: 5000px; left: 8800px; transform: translateY(-50%); }
+#node-CANSAT { top: 5000px; left: 8650px; transform: translateY(-50%); }
+#node-CANSATcomp { top: 5200px; left: 10750px; transform: translateY(-50%);z-index: 68; }
+#node-Cute { top: 5000px; left: 8500px; transform: translateY(-50%); }
+#node-WRG2026 { top: 5200px; left: 11000px; transform: translateY(-50%); z-index: 67;}
 
 
 
